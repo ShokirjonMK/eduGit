@@ -1,0 +1,47 @@
+Table Teachers
+id	FIO 	FanNomi	Tarif	DarsO'tish(Kuni|Vaqti)	Tel	IshBoshSana	Maoshi
+
+
+84 14, [25.11.19 20:41]
+If you need simply render the related views using alias eg:
+
+if you want use a backend view from front end
+
+    class YourControllerController extends Controller
+    {
+        public function behaviors()
+        {
+            return [
+                'verbs' => [
+                    'class' => VerbFilter::className(),
+                    'actions' => [
+                        'delete' => ['post'],
+                    ],
+                ],
+            ];
+        }
+
+        public function actionIndex()
+        {
+            $searchModel = new YourModelSearch();
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+            $dataProvider->pagination->pageSize=15;
+
+            return $this->render('@backend/views/your-controller/index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+
+        }
+
+84 14, [25.11.19 20:43]
+suppose you want to save all images for (frontend and backend) CRUD under frontend/web/uploads so in your backend config file add this component:
+
+'urlManagerFrontEnd' => [
+        'class' => 'yii\web\urlManager',
+        'baseUrl' => 'http://front.domain.ext/',//frontend app url
+], 
+then use it from the backend controllers or models :
+
+ Yii::$app->urlManagerFrontEnd->baseUrl ."/path/to/your/place";
+Hope this help
