@@ -31,7 +31,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 ])->checkboxList($authItem); */?>
 
 
-
                 <div class="form-group">
                     <?= Html::submitButton('Create', ['class' => 'btn btn-primary pull-right', 'name' => 'signup-button']) ?>
                 </div>

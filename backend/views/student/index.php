@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
     if ($user->status != 10) {
         echo '"class"="danger"';
     }
-    ?>>
+    ?>
         <td><?=$i++?></td>
         <td><?=$student->full_name;?></td>
         <td><?= $student->phone_number;?></td>
